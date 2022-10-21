@@ -33,19 +33,18 @@
 
 <div class="container-fluid row">
     <div class="p-0 col-2">
-        <div class="nav flex-column nav-pills pt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" href="/admin" sec:authorize="hasRole('ROLE_ADMIN')" role="tab"
-               aria-controls="v-pills-home" aria-selected="true">Admin</a>
-            <a class="nav-link" href="/user" sec:authorize="(hasAnyRole('ROLE_ADMIN', 'ROLE_USER'))"
-               role="tab"
-               aria-controls="v-pills-profile" aria-selected="false">User</a>
+        <div class="nav flex-column nav-pills pt-4" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="adminPanelTable" data-toggle="tab" href="#adminPanel"
+               role="tab" aria-controls="adminPanel" aria-selected="false">Admin</a>
+            <a class="nav-link" id="userPanelTable" data-toggle="tab" href="#userPanel"
+               role="tab" aria-controls="userPanel" aria-selected="false">User</a>
         </div>
     </div>
     <div class="col-10 p-1">
         <div class="container-fluid p-4 bg-light">
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="adminPanel" role="tabpanel"
-                     aria-labelledby="adminPanelTableadminPanelTable-tab">
+                     aria-labelledby="adminPanelTable">
                     <h2>Admin panel</h2>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
@@ -151,7 +150,7 @@
                                                 </div>
                                             </div>
                                         </div>
-<!--                                        EDIT END-->
+                                        <!--                                        EDIT END-->
 
 
                                         <!--DELETE MODAL-->
@@ -301,10 +300,39 @@
                         </div>
                     </div>
                 </div>
+
+                <!--                GET USER-->
+                <div class="tab-pane fade" id="userPanel" role="tabpanel" aria-labelledby="userPanel-tab">
+                    <h2>User information-page</h2>
+                    <div class="container-fluid">
+                        <div class="card">
+                            <div class="card-header font-weight-bold">
+                                About user
+                            </div>
+                            <div class="card-body" bg-primary text-white>
+                                <table class="table table-striped">
+                                    <thead class="thead-white">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Age</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Role</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="userCurrent">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

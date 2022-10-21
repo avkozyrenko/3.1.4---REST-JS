@@ -10,6 +10,14 @@ $(document).ready(function () {
     getHeader();
 })
 
+$("#userPanelTable").click(function () {
+    getUser()
+});
+
+$("#adminPanelTable").click(function () {
+    getAllUsersTable();
+})
+
 
 function getAllUsersTable() {
     $("#users").empty();
@@ -181,7 +189,24 @@ userAdd.addEventListener("submit", (e)=>{
 
 })
 
-
+function getUser() {
+    fetch(urlUser, {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+        .then(res => res.json())
+        .then(user => {
+            $('#userCurrent').append($('<tr>')).append(
+                $('<td>').text(user.id),
+                $('<td>').text(user.firstName),
+                $('<td>').text(user.lastName),
+                $('<td>').text(user.age),
+                $('<td>').text(user.email),
+                $('<td>').text(user.roleSet.map(role => role.role.substring(5))))
+        })
+}
 
 
 
